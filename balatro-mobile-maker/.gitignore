@@ -1,0 +1,9 @@
+*.exe
+*.jar
+*.apk*
+*.zip
+jdk*
+openjdk*
+Balatro
+balatro-apk
+Balatro-APK-Patch

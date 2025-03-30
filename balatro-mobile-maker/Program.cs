@@ -9,7 +9,7 @@ internal static class Program
     public static bool _verboseMode;
 
     //TODO: Better command line args handling
-    public static bool ArgsEnableAccessibleSave = false;
+    public static bool ArgsEnableAccessibleSave = true;
 
     /// <summary>
     /// Main entry point of the program
@@ -17,11 +17,6 @@ internal static class Program
     /// <param name="args">Command line arguments</param>
     public static void Main(string[] args)
     {
-        //TODO: Better command line args handling 
-        foreach (string s in args)
-            if(s == "--enable-external-storage-patch")
-                ArgsEnableAccessibleSave = true;
-
         View mainView = new View();
         mainView.Begin();
     }

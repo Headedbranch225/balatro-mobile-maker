@@ -30,13 +30,12 @@ internal class View
         Log("====Balatro APK Maker====\n");
 
         //Initial prompts
-        _cleaup = AskQuestion("Would you like to automatically clean up once complete?");
-        _verboseMode = AskQuestion("Would you like to enable extra logging information?");
+        _cleaup = false;
+        _verboseMode = true;
 
         //If balatro.apk or balatro.ipa already exists, ask before beginning build process again
-        if (!(fileExists("balatro.apk") || fileExists("balatro.ipa")) || AskQuestion("A previous build was found... Would you like to build again?"))
         {
-            _androidBuild = AskQuestion("Would you like to build for Android?");
+            _androidBuild = true;
             _iosBuild = AskQuestion("Would you like to build for iOS (experimental)?");
 
 
@@ -149,14 +148,12 @@ internal class View
 
                     #region APK patch
                     Log("Extracting patch zip...");
-                    if (directoryExists("Balatro-APK-Patch"))
-                    {
-                        Log("Balatro-APK-Patch directory already exists! Deleting Balatro-APK-Patch directory...");
-                        tryDelete("Balatro-APK-Patch");
-                    }
 
                     //Extract Balatro-APK-Patch
-                    extractZip("Balatro-APK-Patch.zip", "Balatro-APK-Patch");
+                    if (!directoryExists("Balatro-APK-Patch"))
+                    {
+                        extractZip("Balatro-APK-Patch.zip", "Balatro-APK-Patch");
+                    }
 
                     if (!directoryExists("Balatro-APK-Patch"))
                     {

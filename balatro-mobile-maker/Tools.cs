@@ -143,7 +143,7 @@ internal class Tools
         View.Cleanup();
         Log("Press any key to exit...");
         Console.ReadKey();
-        Environment.Exit(1);
+        Environment.Exit(0);
     }
 
     /// <summary>
